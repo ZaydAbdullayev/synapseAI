@@ -73,6 +73,7 @@
 
 .navbar_navigation-tabs > figure > span {
   font-size: var(--fs3);
+  display: flex;
 }
 
 /* ================= profil menu ================= */

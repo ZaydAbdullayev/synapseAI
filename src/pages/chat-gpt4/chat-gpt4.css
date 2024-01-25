@@ -79,6 +79,7 @@
   transition: all 0.3s ease-in-out;
   font-size: var(--fs5);
   font-weight: 600;
+  cursor: pointer;
 }
 
 ._mode-sections > span:hover,
@@ -302,6 +303,12 @@
   border-radius: 5px;
   font-size: var(--fs3);
   color: var(--text-color2);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat_action-box span:active {
+  transform: scale(1.1);
 }
 
 ._action-left {

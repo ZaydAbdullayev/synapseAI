@@ -5,6 +5,7 @@ import { datas } from "./datas";
 import { DinamikSidebar, SidebarItem } from "../../components/sidebar/sidebar";
 import { generateComplexColor } from "../services/color.service";
 import { chats } from "./datas";
+import { TypingCodeAnimation } from "../../components/texts/texts.component";
 
 import { HiOutlineArrowRight } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -57,6 +58,7 @@ export const ChatGpt4 = () => {
   ];
   const [chatMode, setChatMode] = useState(sections[0].id);
   const fakeData = Array.from({ length: 10 }, (_, i) => i + 1);
+  const chat_body_box = document.querySelector(".chat_body_box");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -66,31 +68,32 @@ export const ChatGpt4 = () => {
     setChatMode(chat.id);
   };
 
-  // const addNewChat = (chat) => {
-  //   const newChat = {
-  //     ...chat,
-  //     chat_id: Math.random().toString(24).substr(2, 9),
-  //     message: [],
-  //   };
-  //   const newTabs = [...tabsFromStorage, newChat];
-  //   setTabsFromStorage(newTabs);
-  //   sessionStorage.setItem("tabs", JSON.stringify(newTabs));
-  // };
+  const addNewChat1 = (chat) => {
+    const newChat = {
+      ...chat,
+      chat_id: Math.random().toString(24).substr(2, 9),
+      message: [],
+    };
+    const newTabs = [...tabsFromStorage, newChat];
+    setTabsFromStorage(newTabs);
+    sessionStorage.setItem("tabs", JSON.stringify(newTabs));
+  };
 
   const writingChat = (e) => {
     e.preventDefault();
-    if (e.target.value !== "") {
-      setChat(true);
-      setChatHeader([
-        ...chatHeader,
-        {
-          bot_id: "17dced09-ed3a-474f-b750-9cfac6acf5fe",
-          role: "user",
-          content: e.target.value,
-        },
-      ]);
-      e.target.value = "";
-    }
+    const textForm = e.target.text.value;
+    setChat(true);
+    setChatHeader([
+      ...chatHeader,
+      {
+        bot_id: "17dced09-ed3a-474f-b750-9cfac6acf5fe",
+        role: "user",
+        content: textForm,
+      },
+    ]);
+    // chat_body_box it have to scroll to bottom
+    chat_body_box.scrollTop = chat_body_box.scrollHeight;
+    e.target.reset();
   };
 
   const addNewChat = (chat) => {
@@ -156,7 +159,7 @@ export const ChatGpt4 = () => {
                 </span>
               </div>
               <div className="chat_view_box">
-                {chats.map((chat) => {
+                {chatHeader.map((chat) => {
                   return (
                     <div className="_chat-item">
                       <figure className="sender">
@@ -169,7 +172,16 @@ export const ChatGpt4 = () => {
                         )}
                       </figure>
                       <div className="chat_message">
-                        <p>{chat.content}</p>
+                        <p style={{ lineHeight: "1.6" }}>
+                          {chat.role === "user" ? (
+                            chat.content
+                          ) : (
+                            <TypingCodeAnimation
+                              text={chat.content}
+                              language="javascript"
+                            />
+                          )}
+                        </p>
                         {chat.role === "assistant" && (
                           <div className="chat_action-box">
                             <div className="_action-left">
@@ -187,7 +199,7 @@ export const ChatGpt4 = () => {
                               </span>
                             </div>
                             <span>
-                              <RiDeleteBinLine />
+                              <HiArrowPathRoundedSquare />
                             </span>
                           </div>
                         )}
@@ -204,7 +216,7 @@ export const ChatGpt4 = () => {
           <span>
             <RiOpenaiFill />
           </span>
-          <input type="text" placeholder={lang.chat_input} />
+          <input type="text" name="text" placeholder={lang.chat_input} />
           <div>
             <AiOutlinePlusCircle />
           </div>
