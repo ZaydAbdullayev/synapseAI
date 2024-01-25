@@ -1,0 +1,133 @@
+:root {
+  --icon-w: 35px;
+}
+
+.dinamik_sidebar_conatiner {
+  width: var(--sidebar-w);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 1px solid var(--border-cl2);
+  gap: var(--gap6);
+}
+
+/* ============== sidebar all content section ==============  */
+._sidebar_contents {
+  width: 100%;
+  flex: 1;
+  padding: 2% 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap5);
+  overflow-y: auto;
+}
+
+._sidebar_contents::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar_content_item {
+  width: 100%;
+  padding: 1%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap6);
+  color: var(--text-color1);
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar_content_item:hover {
+  background: var(--bg-color2);
+}
+
+.sidebar_content_item > img {
+  width: var(--icon-w);
+  height: var(--icon-w);
+  object-fit: cover;
+}
+
+.sidebar_content_item > p {
+  flex: 1;
+  font-size: var(--fs5);
+}
+
+/* =========== sidebar upgarte pro section =========== */
+.sidebar_upgrade_box {
+  position: relative;
+  width: 80%;
+  aspect-ratio: 2/1;
+  padding: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 15px;
+  background: var(--bg-color6);
+  gap: var(--gap3);
+}
+
+.sidebar_upgrade_box > img {
+  width: 50%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.sidebar_upgrade_box > button {
+  width: 100%;
+  height: var(--i-b-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap6);
+  border-radius: calc(var(--i-b-h) / 2);
+  background: var(--bg-btn2);
+  color: #fff;
+  font-size: var(--fs4);
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+  border: none;
+}
+
+.sidebar_upgrade_box > button:active {
+  transform: scale(0.98);
+}
+
+.sidebar_upgrade_box > span {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-color3);
+  color: var(--text-color1);
+  font-size: var(--fs3);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ================ sidebar search box ================  */
+.dinamik_sidebar-search {
+  width: 100%;
+  height: var(--i-b-h);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap6);
+  border-bottom: 1px solid var(--bg-color2);
+}
+
+.dinamik_sidebar-search > input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: var(--text-color1);
+  font-size: var(--fs5);
+}

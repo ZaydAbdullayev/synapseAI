@@ -1,0 +1,125 @@
+.navbar_container {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: var(--navbar-wh);
+  padding: var(--navbar-pd);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee9;
+  z-index: 999999;
+  background: inherit;
+}
+
+.navbar_left-logo {
+  height: 100%;
+  cursor: pointer;
+}
+
+.navbar_left-logo > img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================ navigation tabs ================= */
+.navbar_navigation-tabs {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.navbar_navigation-tabs > figure {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--navbar-pd);
+  gap: var(--navbar-pd);
+  color: var(--text-color3);
+  font-size: var(--fs6);
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.navbar_navigation-tabs > figure::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background: var(--bg-color5);
+}
+
+.navbar_navigation-tabs > figure:hover,
+.navbar_navigation-tabs > figure.active {
+  background: var(--bg-color1);
+  color: var(--text-color1);
+}
+
+.navbar_navigation-tabs > :nth-last-child(2)::after,
+.navbar_navigation-tabs > :last-child::after {
+  display: none;
+}
+
+.navbar_navigation-tabs > figure > img {
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.navbar_navigation-tabs > figure > span {
+  font-size: var(--fs3);
+}
+
+/* ================= profil menu ================= */
+.profil_box {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1/1;
+  padding: 0 var(--navbar-pd);
+  display: flex;
+  align-items: center;
+  gap: var(--navbar-pd);
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profil_box > :first-child {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.profil_box > :last-child {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  height: 10%;
+  width: 10%;
+  object-fit: cover;
+  background: #fff;
+}
+
+/* =============== authenticate btn ===============  */
+.authenticate_btn {
+  height: 90%;
+  padding: var(--navbar-pd) calc(var(--navbar-pd) * 2);
+  margin-right: var(--navbar-pd);
+  border: 2px solid var(--bg-color2);
+  color: var(--text-color1);
+  border-radius: 25px;
+  background: inherit;
+  font-size: var(--fs5);
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  color: var(--text-color4);
+}
+
+.authenticate_btn:hover {
+  border-color: var(--text-color4);
+}
