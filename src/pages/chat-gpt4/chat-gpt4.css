@@ -235,7 +235,7 @@
 .chat_view_box {
   width: 100%;
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 ._chat-item {
@@ -247,7 +247,7 @@
   border-bottom: 1px solid var(--border-cl2);
 }
 
-._chat-item:first-child {
+._chat-item:last-child {
   border-bottom: none;
 }
 

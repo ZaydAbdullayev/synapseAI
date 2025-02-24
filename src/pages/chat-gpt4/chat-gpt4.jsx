@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./chat-gpt4.css";
 import { language } from "../../layout/details";
 import { datas } from "./datas";
 import { DinamikSidebar, SidebarItem } from "../../components/sidebar/sidebar";
 import { generateComplexColor } from "../services/color.service";
-import { chats } from "./datas";
-import { TypingCodeAnimation } from "../../components/texts/texts.component";
 
 import { HiOutlineArrowRight } from "react-icons/hi2";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
@@ -18,12 +16,15 @@ import { BiSolidDislike, BiSolidLike } from "react-icons/bi";
 import cube from "../../assets/images/action cube icon.svg";
 import bg from "../../assets/images/Header image (2).png";
 import user from "../../assets/images/Avatar.svg";
+import axios from "axios";
+import { TypeAnimation } from "react-type-animation";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
 export const ChatGpt4 = () => {
   const lang = language();
   const [header, setHeader] = useState(false);
   const [chat, setChat] = useState(false);
-  const [chatHeader, setChatHeader] = useState(chats);
+  const [chatHeader, setChatHeader] = useState([]);
   const [changeAction, setChangeAction] = useState(false);
   const [tabsFromStorage, setTabsFromStorage] = useState(() => {
     const storedTabs = JSON.parse(sessionStorage.getItem("tabs"));
@@ -58,7 +59,15 @@ export const ChatGpt4 = () => {
   ];
   const [chatMode, setChatMode] = useState(sections[0].id);
   const fakeData = Array.from({ length: 10 }, (_, i) => i + 1);
-  const chat_body_box = document.querySelector(".chat_body_box");
+  const messagesEndRef = useRef(null);
+
+  const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${API_KEY}`;
+
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -68,33 +77,67 @@ export const ChatGpt4 = () => {
     setChatMode(chat.id);
   };
 
-  const addNewChat1 = (chat) => {
-    const newChat = {
-      ...chat,
-      chat_id: Math.random().toString(24).substr(2, 9),
-      message: [],
-    };
-    const newTabs = [...tabsFromStorage, newChat];
-    setTabsFromStorage(newTabs);
-    sessionStorage.setItem("tabs", JSON.stringify(newTabs));
-  };
-
   const writingChat = (e) => {
     e.preventDefault();
     const textForm = e.target.text.value;
     setChat(true);
-    setChatHeader([
-      ...chatHeader,
-      {
-        bot_id: "17dced09-ed3a-474f-b750-9cfac6acf5fe",
-        role: "user",
-        content: textForm,
-      },
-    ]);
-    // chat_body_box it have to scroll to bottom
-    chat_body_box.scrollTop = chat_body_box.scrollHeight;
+    const msg = {
+      mesage_id: Math.random().toString(24).substr(2, 9),
+      role: "user",
+      content: textForm,
+    };
+    setChatHeader([...chatHeader, msg]);
     e.target.reset();
   };
+
+  const sendMessage = useCallback(
+    async (e) => {
+      e.preventDefault();
+      const textForm = e.target.text.value;
+      const userMsg = {
+        mesage_id: Math.random().toString(24).substr(2, 9),
+        role: "user",
+        content: textForm,
+      };
+
+      setChat(true);
+      setChatHeader((prev) => [...prev, userMsg]);
+
+      try {
+        const { data } = await axios.post(API_URL, {
+          contents: [{ parts: [{ text: textForm }] }],
+        });
+
+        const aiResponse =
+          data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+          "No response received";
+        const assistantMsg = {
+          mesage_id: Math.random().toString(24).substr(2, 9),
+          role: "assistant",
+          content: aiResponse,
+        };
+
+        setChatHeader((prev) => [...prev, assistantMsg]);
+      } catch (error) {
+        console.error(error);
+        setChatHeader((prev) => [
+          ...prev,
+          {
+            mesage_id: Math.random().toString(24).substr(2, 9),
+            role: "assistant",
+            content: "No response received",
+          },
+        ]);
+      } finally {
+        e.target.reset();
+      }
+    },
+    [API_URL]
+  );
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [chatHeader]);
 
   const addNewChat = (chat) => {
     setChat(true);
@@ -112,7 +155,7 @@ export const ChatGpt4 = () => {
         {!chat ? (
           <div className="chat_body_box">
             <div className="chat_body_title">
-              <h1>Chat GPT-4</h1>
+              <h1>Gemini AI</h1>
               <p>{lang.gpt4.description}</p>
             </div>
             <div className="change_chat-mode">
@@ -145,6 +188,7 @@ export const ChatGpt4 = () => {
                 ))}
               </div>
             </div>
+            <div ref={messagesEndRef}></div>
           </div>
         ) : (
           <div className="chat_body_box">
@@ -176,9 +220,16 @@ export const ChatGpt4 = () => {
                           {chat.role === "user" ? (
                             chat.content
                           ) : (
-                            <TypingCodeAnimation
-                              text={chat.content}
-                              language="javascript"
+                            <TypeAnimation
+                              sequence={[chat.content, 9999999, ""]}
+                              speed={50}
+                              cursor={false}
+                              omitDeletionAnimation={false}
+                              style={{
+                                fontSize: "1em",
+                                display: "block",
+                                whiteSpace: "pre-wrap",
+                              }}
                             />
                           )}
                         </p>
@@ -209,10 +260,11 @@ export const ChatGpt4 = () => {
                 })}
               </div>
             </div>
+            <div ref={messagesEndRef}></div>
           </div>
         )}
 
-        <form className="chat_main-input-box" onSubmit={writingChat}>
+        <form className="chat_main-input-box" onSubmit={sendMessage}>
           <span>
             <RiOpenaiFill />
           </span>

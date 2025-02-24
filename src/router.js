@@ -9,7 +9,7 @@ export const Router = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/chat-gpt4" element={<ChatGpt4 />} />
+        <Route path="/gemini-ai" element={<ChatGpt4 />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Route>
@@ -22,5 +22,5 @@ export const Contact = () => {
 };
 
 export const NotFound = () => {
-  return <h1>Page not found</h1>;
+  return <h1>Not yet available</h1>;
 };

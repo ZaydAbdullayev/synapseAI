@@ -43,9 +43,9 @@ export const darkMode = {
 export const navigations = [
   {
     id: 1,
-    title: "Chat GPT-4",
-    icon: require("../assets/images/logo GPT.png"),
-    path: "/chat-gpt4",
+    title: "Gemini AI",
+    icon: lodoR,
+    path: "/gemini-ai",
   },
   {
     id: 2,
@@ -73,9 +73,9 @@ export const navigations = [
   },
   {
     id: 6,
-    title: "Synapse",
-    icon: lodoR,
-    path: "/synapse",
+    title: "Chat GPT-4",
+    icon: require("../assets/images/logo GPT.png"),
+    path: "/chat-gpt4",
   },
   {
     id: 7,

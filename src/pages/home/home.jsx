@@ -4,10 +4,10 @@ import { language } from "../../layout/details";
 import { generateComplexColor } from "../services/color.service";
 import { useNavigate, Link } from "react-router-dom";
 
-import { RiOpenaiFill } from "react-icons/ri";
 import { CiSearch } from "react-icons/ci";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { FaPlus, FaCode } from "react-icons/fa6";
+import { SiGooglegemini } from "react-icons/si";
 import avatar1 from "../../assets/images/image (1).webp";
 import avatar2 from "../../assets/images/image (2).webp";
 import avatar3 from "../../assets/images/image (3).webp";
@@ -83,13 +83,13 @@ export const Home = () => {
         <div className="home_header-bg">
           <img src={bg} alt="" />
           <figure className="home_header-icon">
-            <RiOpenaiFill />
+            <SiGooglegemini />
           </figure>
         </div>
         <div className="home_main-informations">
           <div className="_information_header">
-            <h1>ChatGPT 4</h1>
-            <button onClick={() => navigate("chat-gpt4")}>
+            <h1>Gemini AI</h1>
+            <button onClick={() => navigate("gemini-ai")}>
               {lang.createChat} <FaPlus />
             </button>
           </div>
@@ -117,7 +117,7 @@ export const Home = () => {
               <p>
                 Developer{" "}
                 <span>
-                  OpenAI <RiOpenaiFill />
+                  OpenAI <SiGooglegemini />
                 </span>
               </p>
               <p>
