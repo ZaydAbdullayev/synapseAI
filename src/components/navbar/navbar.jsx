@@ -11,6 +11,7 @@ import profil from "../../assets/images/Avatar.svg";
 import newM from "../../assets/images/new icon.svg";
 import addTab from "../../assets/images/plus.svg";
 import { RxCross2 } from "react-icons/rx";
+import { RiTwitterXFill } from "react-icons/ri";
 
 export const Navbar = memo(() => {
   const user = JSON?.parse(localStorage.getItem("user")) || {};
@@ -63,7 +64,15 @@ export const Navbar = memo(() => {
           <img src={newM} alt="" />
         </figure>
       ) : (
-        <button className="authenticate_btn">{lang.layout.loginBtn}</button>
+        <>
+          <button
+            className="authenticate_btn"
+            onClick={() => window.open("https://x.com/brainpool_ai", "_blank")}
+          >
+            Follow <RiTwitterXFill />
+          </button>
+          <button className="authenticate_btn">{lang.layout.loginBtn}</button>
+        </>
       )}
     </div>
   );

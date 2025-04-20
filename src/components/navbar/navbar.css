@@ -109,6 +109,10 @@
 /* =============== authenticate btn ===============  */
 .authenticate_btn {
   height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   padding: var(--navbar-pd) calc(var(--navbar-pd) * 2);
   margin-right: var(--navbar-pd);
   border: 2px solid var(--bg-color2);
@@ -119,6 +123,10 @@
   font-weight: 600;
   transition: all 0.3s ease-in-out;
   color: var(--text-color4);
+
+  svg {
+    font-size: 18px;
+  }
 }
 
 .authenticate_btn:hover {
