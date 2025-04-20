@@ -1,0 +1,32 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b89ae256.css",
+    "main.js": "/static/js/main.8015651c.js",
+    "static/media/Empty Chat 1.svg": "/static/media/Empty Chat 1.39b1fc878ad7bd583fc3a3200f69e359.svg",
+    "static/media/Avatar.svg": "/static/media/Avatar.9527d13415d878d442180faf85017ec8.svg",
+    "static/media/Header image (2).png": "/static/media/Header image (2).8da0a0aac692886f5f5f.png",
+    "static/media/Header image.png": "/static/media/Header image.1c410c8e0b1c4de615eb.png",
+    "static/media/Logo_Bard.svg": "/static/media/Logo_Bard.5fc617db10d872fb38a22641aed8da4d.svg",
+    "static/media/home tab.svg": "/static/media/home tab.b7e780fe65c63f6c709e.svg",
+    "static/media/Logo_Heygen.svg": "/static/media/Logo_Heygen.12a2f31c4bb07a4d17d1e2714b8db921.svg",
+    "static/media/dark mode icon.svg": "/static/media/dark mode icon.2d5a51f668bf7ca42f085f5ecfacde9e.svg",
+    "static/media/icon up.svg": "/static/media/icon up.90d947f72656bfb48b54ea40c4171093.svg",
+    "static/media/image (1).webp": "/static/media/image (1).6e25faa3105c416b7cea.webp",
+    "static/media/image (3).webp": "/static/media/image (3).92d4946db801d04089fd.webp",
+    "static/media/image.webp": "/static/media/image.794e80690f660632ac5d.webp",
+    "static/media/action cube icon.svg": "/static/media/action cube icon.032e6672f127e06bb55c61766fb9bfb1.svg",
+    "static/media/image (2).webp": "/static/media/image (2).00ede71d087c10252ffb.webp",
+    "static/media/code-circle-01.svg": "/static/media/code-circle-01.50fff938637b7005bdc6d6895243233d.svg",
+    "index.html": "/index.html",
+    "static/media/plus-circle.svg": "/static/media/plus-circle.9f46bba639be196df88743ad7774ad33.svg",
+    "static/media/add.svg": "/static/media/add.291e4b12034c98c2576be1358afb6bcb.svg",
+    "static/media/plus.svg": "/static/media/plus.df968c0128609d590d605734971e0d81.svg",
+    "static/media/new icon.svg": "/static/media/new icon.6c779899f43e967b3e2fd652095c0e34.svg",
+    "main.b89ae256.css.map": "/static/css/main.b89ae256.css.map",
+    "main.8015651c.js.map": "/static/js/main.8015651c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b89ae256.css",
+    "static/js/main.8015651c.js"
+  ]
+}
