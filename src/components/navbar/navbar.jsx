@@ -3,7 +3,6 @@ import "./navbar.css";
 import { language } from "../../layout/details";
 import { useNavigate } from "react-router-dom";
 
-import logo from "../../assets/images/home tab.svg";
 import analytics from "../../assets/images/icon up.svg";
 import ideas from "../../assets/images/icon up.svg";
 import code from "../../assets/images/code-circle-01.svg";
@@ -42,7 +41,6 @@ export const Navbar = memo(() => {
   return (
     <div className="navbar_container">
       <figure className="navbar_left-logo" onClick={() => navigate("/")}>
-        <img src={logo} alt="" />
       </figure>
       <div className="navbar_navigation-tabs">
         {tabsFromStorage?.map((item) => (

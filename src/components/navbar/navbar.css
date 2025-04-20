@@ -13,7 +13,12 @@
 
 .navbar_left-logo {
   height: 100%;
+  width: 200px;
   cursor: pointer;
+  background-image: url("../../assets/images/home\ tab.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .navbar_left-logo > img {
